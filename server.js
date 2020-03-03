@@ -5,22 +5,16 @@ const fs = require('fs');
 const got = require('got');
 const parseStringAsync = promisify(require('xml2js').parseString);
 const readFileAsync = promisify(fs.readFile);
-const hostFilePath = './hosts.json';
+const configFilePath = './ddnsConfig.json';
 const apiKey = process.env.API_KEY;
+const cron = require("node-cron");
 
 const getCurrentIp = async () => {
     return await publicIp.v4();
 }
 
-const parseHostsFile = async () => {
-    let records = [];
-    try {
-        records = JSON.parse(await readFileAsync(hostFilePath, { encoding: 'utf8' }));
-    } catch(e) {
-        console.log(e);
-    }
-
-    return records;
+const parseConfigFile = async () => {
+    return JSON.parse(await readFileAsync(configFilePath, { encoding: 'utf8' }));
 }
 
 
@@ -78,16 +72,15 @@ const updateRecord = async (currentHostIp, domainInfo) => {
     return response;
 }
 
-const main = async () => {
+const executeJob = async config => {
     const currentHostIp = await getCurrentIp();
     console.log(`Host IP: ${currentHostIp}`);
 
-    const records = await parseHostsFile();
-    console.log(records);
-    records.forEach(async (record) => {
+    config.records.forEach(async (record) => {
         record.hostNames.forEach( async (hostName) => {
             console.log(`Processing ${hostName}.${record.domainName}`);
             const domainInfo = await listRecordsForDomain(record.domainName, hostName);
+
             if(domainInfo && currentHostIp !== domainInfo.currentIp && domainInfo.code === 300) {
                 console.log(`Updating ${domainInfo.hostName}.${domainInfo.domain} from ${domainInfo.currentIp} to ${currentHostIp}`)
                 const response = await updateRecord(currentHostIp, domainInfo);
@@ -97,10 +90,24 @@ const main = async () => {
     });
 }
 
+const main = async () => {
+    const config = await parseConfigFile();
+    console.log(config);
+    
+    // Run on start and then on interval.
+    await executeJob(config);
+
+    if (config.cronConfig.runCron) {
+        cron.schedule(`0 */${config.cronConfig.intervalMinutes || 20} * * * *`, async function () {
+            await executeJob(config);
+        });
+    }
+}
+
 (async () => {
     try {
         await main();
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
 })();

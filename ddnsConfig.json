@@ -1,0 +1,15 @@
+{
+    "records": [
+        {
+            "domainName": "millerfamily3.com",
+            "hostNames": [
+                "",
+                "www"
+            ]
+        }
+    ],  
+    "cronConfig": {
+        "runCron": false,
+        "intervalMinutes": 20
+    }
+}

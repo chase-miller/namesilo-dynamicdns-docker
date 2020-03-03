@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:lts-alpine3.11
 
 LABEL Tim Turner <timdturner@gmail.com>
 
