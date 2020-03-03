@@ -1,3 +1,4 @@
+require('log-timestamp');
 const publicIp = require('public-ip');
 const jsonFile = require('jsonfile');
 const { promisify, inspect } = require('util');
