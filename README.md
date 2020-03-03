@@ -7,7 +7,7 @@ A docker container to update namesilo's dynamic DNS. Forked from https://github.
 ## Sample `ddnsConfig.json`
 For host `example.com` & `www.example.com`
 
-```json
+```js
 {
     "records": [
         {
