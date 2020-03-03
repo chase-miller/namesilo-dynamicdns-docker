@@ -1,6 +1,6 @@
 FROM node:lts-alpine3.11
 
-LABEL Tim Turner <timdturner@gmail.com>
+LABEL Chase Miller <chase.a.miller@gmail.com>
 
 WORKDIR /namesilo
 

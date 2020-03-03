@@ -1,21 +1,27 @@
 # namesilo-dynamicdns-docker
-A docker container to update namesilo's dynamic DNS
+A docker container to update namesilo's dynamic DNS. Forked from https://github.com/fedoranimus/namesilo-dynamicdns-docker.
 
 ## Docker
-`docker run -d -v /namesilo/hosts.json:/namesilo/hosts.json -e API_KEY='ApiKey' timdturner/namesilo-dynamicdns`
+`docker run -d -v /namesilo/ddnsConfig.json:/namesilo/ddnsConfig.json -e API_KEY='ApiKey' chaseamiller/namesilo-dynamicdns`
 
-## Sample `hosts.json`
-For host `test.example.com` & `test2.example.com`
+## Sample `ddnsConfig.json`
+For host `example.com` & `www.example.com`
 
 ```json
-[
-    {
-        "domainName": "example.com",
-        "hostNames": [
-            "test",
-            "test2"
-        ]
+{
+    "records": [
+        {
+            "domainName": "example.com",
+            "hostNames": [
+                "",
+                "www"
+            ]
+        }
+    ],  
+    "cronConfig": {
+        "runCron": false,
+        "intervalMinutes": 20
     }
-]
+}
 
 ```

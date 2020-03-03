@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fedoranimus/namesilo-dynamicdns-docker.git"
+    "url": "git+https://github.com/chase-miller/namesilo-dynamicdns-docker.git"
   },
   "keywords": [
     "namesilo",
@@ -17,12 +17,12 @@
     "dns",
     "dynamicdns"
   ],
-  "author": "Tim Turner",
+  "author": "Chase Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fedoranimus/namesilo-dynamicdns-docker/issues"
+    "url": "https://github.com/chase-miller/namesilo-dynamicdns-docker/issues"
   },
-  "homepage": "https://github.com/fedoranimus/namesilo-dynamicdns-docker#readme",
+  "homepage": "https://github.com/chase-miller/namesilo-dynamicdns-docker#readme",
   "dependencies": {
     "got": "^8.0.2",
     "jsonfile": "^4.0.0",
