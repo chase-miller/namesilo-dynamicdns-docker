@@ -18,8 +18,9 @@ For host `example.com` & `www.example.com`
             ]
         }
     ],  
+    "useCache": true,
     "cronConfig": {
-        "runCron": false,
+        "runCron": true,
         "intervalMinutes": 20
     }
 }
