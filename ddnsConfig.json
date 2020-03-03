@@ -1,7 +1,8 @@
 {
-    "records": [],  
+    "records": [],
+    "useCache": true,
     "cronConfig": {
-        "runCron": false,
+        "runCron": true,
         "intervalMinutes": 20
     }
 }
