@@ -9,6 +9,8 @@ A docker container to update namesilo's dynamic DNS. Forked from https://github.
 ## Docker
 `docker run -d -v /namesilo/ddnsConfig.json:/namesilo/ddnsConfig.json -e API_KEY='ApiKey' chaseamiller/namesilo-ddns`
 
+See https://hub.docker.com/r/chaseamiller/namesilo-ddns.
+
 ## Sample `ddnsConfig.json`
 For host `example.com` & `www.example.com`
 
