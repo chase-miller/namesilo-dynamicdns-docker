@@ -22,7 +22,8 @@ For host `example.com` & `www.example.com`
     "cronConfig": {
         "runCron": true,         // Start a recurring cron job within the runtime. Setting this to true means you can start a docker container and let it run in the background to be sure that namesilo will be updated whenever your IP changes.
         "intervalMinutes": 20    // The number of minutes between cron job runs.
-    }
+    },
+    "logLevel": "info"           // debug, info, warning, error
 }
 
 ```
