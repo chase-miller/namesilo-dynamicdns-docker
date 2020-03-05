@@ -1,5 +1,10 @@
 # namesilo-dynamicdns-docker
-A docker container to update namesilo's dynamic DNS. Forked from https://github.com/fedoranimus/namesilo-dynamicdns-docker.
+A docker container to update namesilo's dynamic DNS. Forked from https://github.com/fedoranimus/namesilo-dynamicdns-docker with the following enhancements:
+
+* Based off the very efficient `node:lts-alpine3.11` image.
+* Internal cron job - run and forget.
+* Caching of IP address
+* Log levels, log tweaks
 
 ## Docker
 `docker run -d -v /namesilo/ddnsConfig.json:/namesilo/ddnsConfig.json -e API_KEY='ApiKey' chaseamiller/namesilo-ddns`
