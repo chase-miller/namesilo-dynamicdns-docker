@@ -88,7 +88,7 @@ const ddnsUpdater = (config, logger, apiKey) => {
             const cachedIp = await getCachedIp(config);
     
             if (cachedIp && (currentHostIp === cachedIp)) {
-                logger.debug(`Current host is the same as the cached ip - ${cachedIp}. Exiting...`);
+                logger.info(`Current host is the same as the cached ip - ${cachedIp}. Skipping further processing...`);
                 return;
             }
         }

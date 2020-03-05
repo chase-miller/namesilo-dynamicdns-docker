@@ -1,9 +1,9 @@
 {
     "records": [],
-    "useCache": false,
+    "useCache": true,
     "cronConfig": {
         "runCron": true,
-        "intervalMinutes": 1
+        "intervalMinutes": 10
     },
     "logLevel": "info"
 }
