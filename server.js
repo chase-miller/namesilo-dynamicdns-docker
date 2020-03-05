@@ -33,14 +33,15 @@ const parseConfigFile = async () => {
     var logger = console;
 
     try {
-        if (apiKey === undefined || apiKey === '') {
-            throw Error('Please set the API_KEY env variable.')
-        }
-    
         const config = await parseConfigFile();
         logger = createLoggerFromLevel(config.logLevel);
 
         logger.debug('loaded config: %o', config);
+
+        if (apiKey === undefined || apiKey === '') {
+            logger.error('Please set the API_KEY env variable.');
+            process.exit(1);
+        }
         
         await ddnsUpdater.execute(config, logger, apiKey);
     } catch (e) {
