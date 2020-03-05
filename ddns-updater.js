@@ -79,7 +79,7 @@ const ddnsUpdater = (config, logger, apiKey) => {
     }
     
     const executeJob = async () => {
-        logger.info('Starting namesilo DDNS refresh check');
+        logger.debug('Starting namesilo DDNS refresh check');
     
         const currentHostIp = await getCurrentIp();
         logger.debug(`Host IP: ${currentHostIp}`);
@@ -114,7 +114,7 @@ const ddnsUpdater = (config, logger, apiKey) => {
             await updateCachedIp(currentHostIp);
         }
     
-        logger.info('Finished namesilo DDNS refresh check')
+        logger.debug('Finished namesilo DDNS refresh check')
     
         function hostDomainToString(host, domain) {
             if (host === '') {
